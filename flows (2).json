@@ -1,0 +1,664 @@
+[
+    {
+        "id": "db084534aa40a7e3",
+        "type": "tab",
+        "label": "MIT APP Inventor -> InfluxDB",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "c8964c3b1af2a97b",
+        "type": "tab",
+        "label": "Dashboard",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5219c3602c6da8c4",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "database",
+        "name": "my_influxdb localhost",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://localhost:8086",
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "54d622bd6463f55d",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "8907f7751910d1c4",
+        "type": "ui_tab",
+        "name": "Visualisateur de données",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "a637e1b5a95c58f7",
+        "type": "ui_group",
+        "name": "Données Light Sensor",
+        "tab": "8907f7751910d1c4",
+        "order": 1,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "9b064d497235f1d6",
+        "type": "http in",
+        "z": "db084534aa40a7e3",
+        "name": "",
+        "url": "/app/light/:timestamp/:value",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 210,
+        "y": 160,
+        "wires": [
+            [
+                "6ce70922e653bd90",
+                "3e2afbe74af40613"
+            ]
+        ]
+    },
+    {
+        "id": "b29e3eab388bc966",
+        "type": "debug",
+        "z": "db084534aa40a7e3",
+        "d": true,
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1300,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "f27ddc2101afd459",
+        "type": "influxdb out",
+        "z": "db084534aa40a7e3",
+        "influxdb": "5219c3602c6da8c4",
+        "name": "",
+        "measurement": "lightSensor",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "uca",
+        "bucket": "tl",
+        "x": 1420,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "6ce70922e653bd90",
+        "type": "function",
+        "z": "db084534aa40a7e3",
+        "name": "Format payload for InfluxDB",
+        "func": "if (msg.req.url.startsWith('/app/light/')) {\n    msg.payload = {\n        type: 'light',\n        light: Math.abs(Number(msg.req.params.value)),\n        time: Number(msg.req.params.timestamp)\n    };\n} else if (msg.req.url.startsWith('/app/orientation/')) {\n    msg.payload = {\n        type: 'orientation',\n        orientation: Number(msg.req.params.value),\n        time: Number(msg.req.params.timestamp)\n    };\n} else if (msg.req.url.startsWith('/app/step/')) {\n    msg.payload = {\n        type: 'step',\n        step: Number(msg.req.params.timestamp),\n        time: Number(msg.req.params.value)\n    };\n} else if (msg.req.url.startsWith('/app/pos/')) {\n    msg.payload = {\n        type: 'pos',\n        latitude: Number(msg.req.params.alt),\n        time: Number(msg.req.params.lon),\n        longitude: Number(msg.req.params.timestamp)\n\n    };\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 260,
+        "wires": [
+            [
+                "4a1fbca31fd99c3c",
+                "d00dbaeff03bb6c6",
+                "a5427b4f04b1a574"
+            ]
+        ]
+    },
+    {
+        "id": "4950a459adc8d4d0",
+        "type": "http response",
+        "z": "db084534aa40a7e3",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1160,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "4a1fbca31fd99c3c",
+        "type": "function",
+        "z": "db084534aa40a7e3",
+        "name": "function 3",
+        "func": "msg.payload = msg.payload[\"time\"];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 600,
+        "wires": [
+            [
+                "4950a459adc8d4d0"
+            ]
+        ]
+    },
+    {
+        "id": "db5adb60b6b54565",
+        "type": "http in",
+        "z": "db084534aa40a7e3",
+        "name": "",
+        "url": "/app/orientation/:timestamp/:value",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 230,
+        "y": 260,
+        "wires": [
+            [
+                "6ce70922e653bd90"
+            ]
+        ]
+    },
+    {
+        "id": "d00dbaeff03bb6c6",
+        "type": "switch",
+        "z": "db084534aa40a7e3",
+        "name": "",
+        "property": "payload.type",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "light",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "orientation",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "step",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "pos",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 1030,
+        "y": 260,
+        "wires": [
+            [
+                "f27ddc2101afd459",
+                "b29e3eab388bc966"
+            ],
+            [
+                "152b0ccc1ad69018",
+                "e50c8c8decd4833d"
+            ],
+            [
+                "6fa60de9ec2a98d3",
+                "66b50bbac181f308"
+            ],
+            [
+                "fba19cd80fc2aafb",
+                "af78b406cfe7bca6"
+            ]
+        ]
+    },
+    {
+        "id": "152b0ccc1ad69018",
+        "type": "influxdb out",
+        "z": "db084534aa40a7e3",
+        "influxdb": "5219c3602c6da8c4",
+        "name": "",
+        "measurement": "orientationsensor",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "uca",
+        "bucket": "tl",
+        "x": 1410,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "e50c8c8decd4833d",
+        "type": "debug",
+        "z": "db084534aa40a7e3",
+        "d": true,
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1320,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "3e2afbe74af40613",
+        "type": "debug",
+        "z": "db084534aa40a7e3",
+        "d": true,
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "a5427b4f04b1a574",
+        "type": "debug",
+        "z": "db084534aa40a7e3",
+        "d": true,
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "765680140dceb071",
+        "type": "http in",
+        "z": "db084534aa40a7e3",
+        "name": "",
+        "url": "/app/step/:timestamp/:value",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 210,
+        "y": 360,
+        "wires": [
+            [
+                "6ce70922e653bd90"
+            ]
+        ]
+    },
+    {
+        "id": "98385bd152241c4b",
+        "type": "http in",
+        "z": "db084534aa40a7e3",
+        "name": "",
+        "url": "/app/pos/:timestamp/:alt/:lon",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 210,
+        "y": 480,
+        "wires": [
+            [
+                "6ce70922e653bd90"
+            ]
+        ]
+    },
+    {
+        "id": "6fa60de9ec2a98d3",
+        "type": "influxdb out",
+        "z": "db084534aa40a7e3",
+        "influxdb": "5219c3602c6da8c4",
+        "name": "",
+        "measurement": "stepsensor",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "uca",
+        "bucket": "tl",
+        "x": 1400,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "fba19cd80fc2aafb",
+        "type": "influxdb out",
+        "z": "db084534aa40a7e3",
+        "influxdb": "5219c3602c6da8c4",
+        "name": "",
+        "measurement": "possensor",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "uca",
+        "bucket": "tl",
+        "x": 1430,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "66b50bbac181f308",
+        "type": "debug",
+        "z": "db084534aa40a7e3",
+        "d": true,
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1320,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "af78b406cfe7bca6",
+        "type": "debug",
+        "z": "db084534aa40a7e3",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1080,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "c9481dcfdb1e98c0",
+        "type": "inject",
+        "z": "c8964c3b1af2a97b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "60",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 160,
+        "y": 120,
+        "wires": [
+            [
+                "2eff94efe4ec82e5"
+            ]
+        ]
+    },
+    {
+        "id": "e789aa9d3e6a9e0c",
+        "type": "influxdb in",
+        "z": "c8964c3b1af2a97b",
+        "influxdb": "5219c3602c6da8c4",
+        "name": "",
+        "query": "",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "org": "xpert",
+        "x": 520,
+        "y": 120,
+        "wires": [
+            [
+                "2b80f275341460f8",
+                "1f252846649ce291"
+            ]
+        ]
+    },
+    {
+        "id": "2eff94efe4ec82e5",
+        "type": "function",
+        "z": "c8964c3b1af2a97b",
+        "name": "function 1",
+        "func": "msg.query = `from(bucket:\"bucket_test\")\n|> range(start:${new Date(Date.now() - 1000*60).toISOString()})\n|> filter(fn: (r) => r._measurement==\"lightSensor\")\n|> group()`;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 120,
+        "wires": [
+            [
+                "e789aa9d3e6a9e0c"
+            ]
+        ]
+    },
+    {
+        "id": "1f252846649ce291",
+        "type": "debug",
+        "z": "c8964c3b1af2a97b",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 780,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "2b80f275341460f8",
+        "type": "split",
+        "z": "c8964c3b1af2a97b",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 310,
+        "y": 240,
+        "wires": [
+            [
+                "751043c112bee5bb"
+            ]
+        ]
+    },
+    {
+        "id": "751043c112bee5bb",
+        "type": "function",
+        "z": "c8964c3b1af2a97b",
+        "name": "function 2",
+        "func": "msg.timestamp = msg.payload._time;\nmsg.payload = msg.payload._value;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 240,
+        "wires": [
+            [
+                "970db765ccb46403"
+            ]
+        ]
+    },
+    {
+        "id": "970db765ccb46403",
+        "type": "ui_chart",
+        "z": "c8964c3b1af2a97b",
+        "name": "",
+        "group": "a637e1b5a95c58f7",
+        "order": 0,
+        "width": "20",
+        "height": "7",
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "15",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 710,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    }
+]
