@@ -2,13 +2,12 @@
 
 ## ✨ **Group Members** ✨
 
-- **Ahmed Khalil**
-- **Ben Sassi**
-- **Hani Mohamed**
-- **Moenes Zribi**
-- **Yasmine Bouakroucha**
+- **Ahmed Khalil Ben Sassi** 🌌
+- **Hani Mohamed** 🧙
+- **Moenes Zribi** 💻
+- **Yasmine Bouakroucha** 🎨
 
 ## 🚀 **Devices** 🚀
 
-- **Poco X3 NFC**
-- **Samsung Smartwatch 5**
+- **Poco X3 NFC** 📱
+- **Samsung Smartwatch 4** ⌚
