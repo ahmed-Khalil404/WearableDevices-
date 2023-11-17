@@ -1,0 +1,9 @@
+<resources>
+    <!-- Other string resources... -->
+
+    <!-- String resource for the initial heart rate text -->
+    <string name="heartRate">Heart Rate: %1$s</string>
+
+    <!-- String resource for the exit button -->
+    <string name="exit_app">Exit App</string>
+</resources>
